@@ -1,0 +1,135 @@
+<module>
+	<main_thumb url_string="$MODULE_NAME.jpg"/>
+	<pretest preTestActive="false"/>
+	<fridge_notes link="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/HB_ENG_SmartShop_FridgeNotes_v01.swf"/>
+	<more_info show_public="false" show_nec="false">
+		<more_info_description><![CDATA[]]></more_info_description>
+	</more_info>
+	
+	
+	<!-- 
+	title_css_prefix is used to apply a CSS change to the title so that the title
+	node content can be used dynamically in other locations and inherit the formats 
+	in those situations.
+	-->
+	<title_css_prefix><![CDATA[<module_title_h1>]]></title_css_prefix>
+	<title><![CDATA[Smart Shopping]]></title>
+	<module_id>HB_16_E_00</module_id>
+	
+	<question><![CDATA[<module_h1>How can I be a smart shopper?</module_h1>]]></question>
+	<description><![CDATA[<module_h2>When you go to the grocery store, do you know how to find the healthiest foods for your family at the most affordable price? This section will give you practical shopping tips to help you discover the best foods for your family and your wallet!</module_h2>]]></description>
+	
+	<interface_text>
+		<item id="description_1"><![CDATA[Start here to find out what the experts say about Smart Shopping.]]></item>
+		<item id="description_2"><![CDATA[Challenge yourself to see if you can determine which is the best smart shopping information.]]></item>
+		<item id="description_3"><![CDATA[Have some fun with these smart shopping activities.]]></item>
+		<item id="description_4"><![CDATA[]]></item>
+		<item id="description_5"><![CDATA[]]></item>
+	</interface_text>
+	
+	<preload_que>
+		<!--
+			It is possible to jump to a module section directly.  The priority attribute in this case is being used
+			as an identifier for content needed for the individual sections.  When module.swf is loaded, it is told 
+			to jump to a section automatically.  This is usually mod_home but not always. It will first load the 
+			content necessary for module.swf to be viewed followed by the the necessary assets for the section we are 
+			jumping to up front. Module will then become active to the user. All remaining content will be preloaded 
+			in the background.
+					
+			priority="0"  <-- any item global to all sections
+			priority="1"  <-- any item related to mod_home section
+			priority="2"  <-- any item related to expert section
+			priority="3"  <-- any item related to challenge section
+			priority="4"  <-- any item related to discover section (Deprecated!)
+			priority="5"  <-- any item related to activities section
+			priority="6"  <-- any item related to tests section (will only load in module NEC view)
+		-->
+		
+		
+		<!-- load the thumbnail first thing-->
+		<item id="0" priority="0" url_string="module/graphics/$MODULE_NAME.jpg"/>
+		
+		<!-- load the players first thing-->
+		<item id="6" priority="0" url_string="HB_challenge_player_fs.swf"/>
+		<item id="7" priority="0" url_string="HB_pdf_player_fs.swf"/>
+		<item id="8" priority="0" url_string="HB_video_player_fs.swf"/>
+		
+		<!-- load section SWFs by priority -->
+		<item id="6" priority="1" url_string="module/mod_home.swf"/>
+		<item id="19" priority="2" url_string="expert/expert.swf"/>
+		<item id="20" priority="3" url_string="challenge/challenge.swf"/>
+		<!-- <item id="21" priority="4" url_string="discover/discover.swf"/> -->
+		<item id="21" priority="5" url_string="activities/activities.swf"/>
+		
+		<!-- expert priority 2 content (xml & menu thumbnails) -->
+		<item id="22" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/expert.xml"/>
+		<item id="23" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail1.png"/>
+		<item id="24" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail2.png"/>
+		<item id="25" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail3.png"/>
+		<item id="26" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail4.png"/>
+		<item id="27" priority="2" url_string="expert/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail5.png"/>
+		
+		<!-- challenge priority 3 content  (xml & menu thumbnails) -->
+		<item id="28" priority="3" url_string="challenge/$MODULE_NAME/$MODULE_LANGUAGE/challenge.xml"/>
+		<item id="29" priority="3" url_string="challenge/$MODULE_NAME/$MODULE_LANGUAGE/$MODULE_NAME.xml"/>
+		<item id="30" priority="3" url_string="challenge/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail1.png"/>
+		<item id="31" priority="3" url_string="challenge/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail2.png"/>
+		
+		<!-- discover priority 4 content 
+		<item id="40" priority="4" url_string="discover/$MODULE_NAME/$MODULE_LANGUAGE/discover.xml"/>
+		<item id="41" priority="4" url_string="discover/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail1.png"/>
+		<item id="42" priority="4" url_string="discover/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail2.png"/>
+		<item id="43" priority="4" url_string="discover/$MODULE_NAME/$MODULE_LANGUAGE/graphics/thumbnail3.png"/>
+		-->
+		
+		<!-- activities priority 5 content (xml & menu thumbnails) -->
+		<item id="35" priority="5" url_string="activities/$MODULE_NAME/xml/$MODULE_LANGUAGE/activities.xml"/>
+		<item id="36" priority="5" url_string="activities/$MODULE_NAME/thumbnail1.png"/>
+		<item id="37" priority="5" url_string="activities/$MODULE_NAME/thumbnail2.png"/>
+		<item id="38" priority="5" url_string="activities/$MODULE_NAME/thumbnail3.png"/>
+		
+		<!-- tests priority 6 content -->
+		<item id="39" priority="6" url_string="tests/$MODULE_NAME/$MODULE_LANGUAGE/test.xml"/>
+		<item id="40" priority="6" url_string="tests/$MODULE_NAME/$MODULE_LANGUAGE/pretest.xml"/>
+		<item id="41" priority="6" url_string="tests/test.swf"/>
+		
+	</preload_que>
+  <nec_pathway>
+	<required_items nec_path_length="25">
+		<item id="r1" thumbnail="tests/graphics/test.png" type="pretest" file="">
+			<title><![CDATA[What Do You Know?]]></title>
+			<description><![CDATA[Start here and show how much you already know about this topic.]]></description>
+		</item>
+		<item id="r2" thumbnail="expert/smart_shopping/english/graphics/thumbnail1.png" type="video" file="HB_video_player_fs.swf" page_id="1">
+			<title><![CDATA[Feature: Who’s the Smart Shopper?]]></title>
+			<description><![CDATA[Tune in to this exciting game show as three contestants compete to find out who is the smart shopper!]]></description>
+		</item>
+		<item id="r3" thumbnail="challenge/smart_shopping/english/graphics/thumbnail1.png" type="challenge" file="challenge/smart_shopping/english/smart_shopping.xml">
+			<title><![CDATA[Challenge: The “Puzzle” of Smart Shopping]]></title>
+			<description><![CDATA[As a mother and her two daughters put together a jigsaw puzzle, they begin to talk about Smart Shopping.]]></description>
+		</item>
+		<item id="r4" thumbnail="activities/smart_shopping/thumbnail1.png" type="activity" file="which_is_smartest/which_is_smartest.swf">
+			<title><![CDATA[Activity: Which is Smartest?]]></title>
+			<description><![CDATA[Test your shopping skills by selecting the most nutritious and money-saving options.]]></description>
+		</item> 
+		<item id="r5" thumbnail="tests/graphics/test.png" type="test" file="">
+			<title><![CDATA[Earn Nutrition Education Credit]]></title>
+			<description><![CDATA[Show off what you've learned in this section.]]></description>
+		</item>
+	</required_items>
+
+    <optional_items>
+		<item id="o1" thumbnail="expert/smart_shopping/english/graphics/thumbnail2.png" type="video" file="HB_video_player_fs.swf" page_id="2">
+			<title><![CDATA[Video: Unit Pricing]]></title>
+			<description><![CDATA[In this video, you’ll learn how to be an even smarter shopper as you learn how unit pricing can help save you money.]]></description>
+		</item>
+		<item id="o2" thumbnail="activities/smart_shopping/thumbnail2.png" type="activity" file="make_a_shopping_list/make_a_shopping_list.swf">
+			<title><![CDATA[Activity: Make a Shopping List]]></title>
+			<description><![CDATA[In this fun and helpful activity, you get to practice making a shopping list. Make sure you complete all the steps before going to the store!]]></description>
+		</item>
+
+    </optional_items>
+
+  </nec_pathway>
+
+</module>
